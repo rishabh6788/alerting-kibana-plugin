@@ -20,6 +20,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Build Alerting Kibana
+      env:
+        GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
       run: |
         KIBANA_VERSION=$(cat package.json | grep version | tail -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
         echo "$KIBANA_VERSION"
