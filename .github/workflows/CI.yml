@@ -14,15 +14,11 @@ jobs:
         node-version: [10.x]
 
     steps:
-    - name: Setup nvm
-      uses: dcodeIO/setup-node-nvm@master
-      with:
-        node-version: lts/*
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+       node-version: ${{ matrix.node-version }}
     - name: Build Alerting Kibana
       env:
         GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
@@ -35,5 +31,4 @@ jobs:
         ls -ltr
         
         cd kibana
-        nvm install
-        nvm use
+        npm install
