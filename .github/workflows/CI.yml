@@ -19,6 +19,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
+    - name: Build Alerting Kibana
+      run: |
         KIBANA_VERSION=$(cat package.json | grep version | tail -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
-        echo "KIBANA_VERSION"
+        echo "$KIBANA_VERSION"
