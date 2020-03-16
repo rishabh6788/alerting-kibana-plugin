@@ -23,3 +23,7 @@ jobs:
       run: |
         KIBANA_VERSION=$(cat package.json | grep version | tail -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
         echo "$KIBANA_VERSION"
+        
+        cd ..
+        git clone -b $KIBANA_VERSION https://$GIT_CREDENTIALS@github.com/opendistro-for-elasticsearch/kibana-oss.git kibana || 1
+        ls -ltr
